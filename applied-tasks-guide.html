@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>دليل المهمات التطبيقية: اصنع لعبة وورقة عمل وفيديو بالذكاء الاصطناعي | مدارس أجيال المواهب</title>
+<meta name="description" content="دليل تفاعلي للمعلمين: مهمات تطبيقية لكل مادة، وأدوات مجانية، ومولّد طلبات، وخطة شخصية للمحاضرة.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Readex+Pro:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F6F7FB; --surface:#FFFFFF; --ink:#111536; --muted:#565C80; --line:#E1E4F0;
+  --primary:#3A3FCB; --on-primary:#FFFFFF; --soft:#ECEEFF; --accent:#F2A20F; --ok:#1B8F6B; --deep:#14163F; --mint:#6EE7C8;
+  --warn-bg:#FFF1D6; --warn:#8A5300; --bad-bg:#FDE7E7; --bad:#A12626; --good-bg:#DDF5EA; --good:#146A4E;
+  --sh:0 1px 2px rgba(17,21,54,.06),0 14px 30px -16px rgba(17,21,54,.25);
+  --display:'Readex Pro','IBM Plex Sans Arabic','Segoe UI',Tahoma,sans-serif;
+  --body:'IBM Plex Sans Arabic','Segoe UI',Tahoma,Arial,sans-serif;
+}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 126px)}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#0D1130;--surface:#151A43;--ink:#EEF0FF;--muted:#A6ACD3;--line:#293063;--primary:#8489FF;--on-primary:#0D1130;--soft:#1D2359;
+    --warn-bg:#3A2B0B;--warn:#FFCF7A;--bad-bg:#3B1717;--bad:#FF9D9D;--good-bg:#0F3327;--good:#7FE0B9;--sh:0 1px 2px rgba(0,0,0,.3),0 14px 30px -16px rgba(0,0,0,.55)}
+}
+:root[data-theme="dark"]{--bg:#0D1130;--surface:#151A43;--ink:#EEF0FF;--muted:#A6ACD3;--line:#293063;--primary:#8489FF;--on-primary:#0D1130;--soft:#1D2359;
+  --warn-bg:#3A2B0B;--warn:#FFCF7A;--bad-bg:#3B1717;--bad:#FF9D9D;--good-bg:#0F3327;--good:#7FE0B9;--sh:0 1px 2px rgba(0,0,0,.3),0 14px 30px -16px rgba(0,0,0,.55)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.75;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:var(--display);margin:0;font-weight:600;line-height:1.25}
+p{margin:0}
+button,input,select,textarea{font-family:inherit}
+.wrap{width:100%;max-width:1160px;margin-inline:auto;padding-inline:20px}
+:focus-visible{outline:3px solid var(--primary);outline-offset:3px;border-radius:6px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:600 16.5px var(--body);padding:12px 24px;border-radius:12px;border:1.5px solid var(--primary);background:var(--primary);color:var(--on-primary);text-decoration:none;cursor:pointer;min-height:50px;transition:filter .15s,background .15s,transform .15s}
+.btn:hover{filter:brightness(1.08)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--primary)}
+.btn.ghost:hover{background:var(--soft);filter:none}
+.btn.sm{min-height:40px;padding:6px 16px;font-size:15px;border-radius:10px}
+.btn.on{background:var(--ok);border-color:var(--ok);color:#fff}
+.btn svg{width:18px;height:18px;flex:none}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:var(--surface);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:14px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);white-space:nowrap}
+.mark{width:38px;height:38px;border-radius:11px;background:var(--primary);display:grid;place-items:center;flex:none}
+.mark svg{width:22px;height:22px;stroke:var(--on-primary);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.logo b{display:block;font-family:var(--display);font-weight:700;font-size:16px;line-height:1.2}
+.logo small{display:block;font-size:13px;color:var(--muted);line-height:1.2}
+.planpill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--primary);background:var(--soft);border-radius:999px;padding:6px 14px;font-weight:600;font-size:15px;min-height:40px}
+.planpill i{font-style:normal;background:var(--primary);color:var(--on-primary);border-radius:999px;min-width:24px;height:24px;display:grid;place-items:center;font-size:13.5px;padding:0 6px}
+.prog{position:absolute;bottom:-1px;inset-inline-start:0;height:3px;width:0;background:var(--accent)}
+.strip{position:sticky;top:calc(env(safe-area-inset-top,0px) + 64px);z-index:49;background:var(--surface);border-bottom:1px solid var(--line)}
+.strip nav{display:flex;gap:6px;overflow-x:auto;padding:8px 0;scrollbar-width:none}
+.strip nav::-webkit-scrollbar{display:none}
+.strip a{flex:none;text-decoration:none;color:var(--muted);font:600 15.5px var(--body);padding:8px 16px;border-radius:10px;min-height:42px;display:flex;align-items:center}
+.strip a:hover{background:var(--soft);color:var(--ink)}
+.strip a.on{background:var(--soft);color:var(--primary)}
+
+/* hero */
+.hero{background:var(--deep);color:#fff;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.03) 47px 48px);pointer-events:none}
+.hero .wrap{position:relative;display:grid;gap:26px;grid-template-columns:1fr;align-items:center;padding-block:44px 52px}
+.kick{display:inline-flex;align-items:center;gap:8px;color:#FFD27A;border:1px solid rgba(255,210,122,.5);border-radius:8px;padding:3px 14px;font-weight:500;font-size:15px;margin-bottom:18px}
+.hero h1{font-size:clamp(36px,7.4vw,66px);font-weight:700;line-height:1.16}
+.hero h1 span{display:block;color:var(--mint)}
+.hero .sub{margin-top:18px;font-size:clamp(17px,2.4vw,20px);color:#D5D9EE;max-width:34em}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.hero .btn{background:#fff;color:var(--deep);border-color:#fff}
+.hero .btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.45)}
+.hero .btn.ghost:hover{background:rgba(255,255,255,.1)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:30px;border-top:1px solid rgba(255,255,255,.16)}
+.stats div{padding:14px 0}
+.stats div+div{padding-inline-start:14px;border-inline-start:1px solid rgba(255,255,255,.16)}
+.stats b{display:block;font-family:var(--display);font-size:clamp(24px,4.6vw,36px);font-weight:700;color:#FFD27A;line-height:1.2}
+.stats small{font-size:13.5px;color:#B9BFE0}
+.art{max-width:520px;width:100%;margin-inline:auto}
+.art svg{display:block;width:100%;height:auto}
+
+/* sections */
+section.sec{padding:72px 0 8px}
+.sh{max-width:40em;margin-bottom:26px}
+.sh .no{display:inline-block;font-family:var(--display);font-weight:700;color:var(--primary);background:var(--soft);border-radius:8px;padding:0 12px;font-size:15px;margin-bottom:10px}
+.sh h2{font-size:clamp(28px,4.6vw,42px)}
+.sh p{margin-top:8px;color:var(--muted);font-size:18px}
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+.rv.in{opacity:1;transform:none}
+
+/* subject explorer */
+.subs{display:flex;gap:10px;overflow-x:auto;padding:4px 2px 12px;scrollbar-width:thin}
+.subs button{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;width:104px;padding:12px 8px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;font:600 15px var(--body);transition:transform .15s,border-color .15s,background .15s}
+.subs button:hover{transform:translateY(-2px);border-color:var(--c,var(--primary))}
+.subs button[aria-selected="true"]{background:var(--c,var(--primary));border-color:var(--c,var(--primary));color:#fff}
+.subs svg{width:44px;height:44px;color:var(--c,var(--primary))}
+.subs button[aria-selected="true"] svg{color:#fff}
+.sp{overflow-anchor:none;display:grid;gap:18px;grid-template-columns:1fr;margin-top:8px}
+.sp-h{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh)}
+.sp-h .bl{width:76px;height:76px;border-radius:22px;background:var(--soft);color:var(--c);display:grid;place-items:center;flex:none}
+.sp-h .bl svg{width:52px;height:52px}
+.sp-h h3{font-size:24px}
+.sp-h p{color:var(--muted);font-size:16px}
+.tasks{display:grid;gap:16px;grid-template-columns:1fr}
+.task{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:10px}
+.task h4{font-size:20px}
+.task .why{color:var(--muted);font-size:16px}
+.badges{display:flex;flex-wrap:wrap;gap:8px}
+.b{display:inline-flex;align-items:center;font-size:13.5px;font-weight:600;border-radius:8px;padding:0 10px;line-height:1.9}
+.b.type{background:var(--soft);color:var(--primary)}
+.b.tool{border:1px solid var(--line);color:var(--ink);background:var(--bg)}
+.task details{border-top:1px dashed var(--line);padding-top:8px}
+.task summary{cursor:pointer;font-weight:600;color:var(--primary);min-height:34px;display:flex;align-items:center}
+.task ol{margin:8px 0 0;padding-inline-start:22px;color:var(--ink);font-size:16px}
+.task li{margin-bottom:4px}
+.pbox{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:15px;line-height:1.85;white-space:pre-wrap;color:var(--ink);max-height:180px;overflow:auto}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
+.caution{background:var(--warn-bg);color:var(--warn);border-radius:12px;padding:10px 14px;font-size:15px}
+
+/* tools */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.filters button{border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:500 15.5px var(--body);padding:8px 18px;border-radius:999px;cursor:pointer;min-height:42px}
+.filters button[aria-pressed="true"]{background:var(--primary);color:var(--on-primary);border-color:var(--primary)}
+.tgrid{display:grid;gap:16px;grid-template-columns:1fr}
+.tool{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:8px}
+.tool[hidden]{display:none}
+.tool .hd{display:flex;align-items:center;gap:12px}
+.av{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font:700 20px var(--display);color:#fff;flex:none}
+.tool h3{font-size:21px;direction:ltr;text-align:right}
+.st{margin-inline-start:auto;font-size:13px;font-weight:600;border-radius:8px;padding:0 10px;line-height:1.9;white-space:nowrap}
+.st.free{background:var(--good-bg);color:var(--good)}
+.st.lim{background:var(--warn-bg);color:var(--warn)}
+.st.txt{background:var(--soft);color:var(--primary)}
+.st.paid{background:var(--bad-bg);color:var(--bad)}
+.tool p{color:var(--muted);font-size:16px}
+.tool .lm{font-size:14.5px;color:var(--warn);background:var(--warn-bg);border-radius:10px;padding:6px 12px}
+
+/* workflow */
+.flow{display:grid;gap:18px;grid-template-columns:1fr}
+.steps{display:flex;flex-direction:column;gap:8px}
+.steps button{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:center;text-align:right;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:12px 14px;cursor:pointer;color:var(--ink);font:600 17px var(--body);min-height:58px}
+.steps button i{font-style:normal;width:40px;height:40px;border-radius:50%;background:var(--soft);color:var(--primary);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.steps button[aria-selected="true"]{border-color:var(--primary);background:var(--soft)}
+.steps button[aria-selected="true"] i{background:var(--primary);color:var(--on-primary)}
+.stepbody{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--sh);display:flex;flex-direction:column;gap:12px}
+.stepbody h3{font-size:24px}
+.stepbody p{color:var(--muted)}
+.nav2{display:flex;justify-content:space-between;gap:10px;margin-top:auto}
+
+/* builder */
+.bld{display:grid;gap:18px;grid-template-columns:1fr}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:var(--sh)}
+label{display:block;font-weight:600;font-size:15.5px;margin-bottom:5px}
+.f,select.f{width:100%;font:400 17px var(--body);padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--bg);color:var(--ink);margin-bottom:14px;min-height:50px}
+.f:focus{outline:3px solid var(--primary);outline-offset:1px}
+.chk{display:flex;align-items:center;gap:10px;font-weight:500;margin-bottom:6px;min-height:36px}
+.chk input{width:22px;height:22px;accent-color:var(--primary)}
+.out h4{font-size:17px;margin:2px 0 8px;color:var(--muted);font-weight:600}
+.out .pbox{max-height:none;min-height:110px;margin-bottom:10px}
+
+/* game sites */
+.sites{display:grid;gap:14px;grid-template-columns:1fr}
+.site{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--sh);display:grid;grid-template-columns:52px 1fr;gap:14px;align-items:start}
+.site .ic{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;color:#fff;font:700 20px var(--display)}
+.site h4{font-size:19px;direction:ltr;text-align:right}
+.site p{color:var(--muted);font-size:15.5px}
+.site .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+
+/* video calc */
+.calc{display:grid;gap:18px;grid-template-columns:1fr}
+.rad{display:grid;gap:8px;margin-bottom:14px}
+.rad label{display:flex;align-items:center;gap:10px;background:var(--bg);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600;cursor:pointer;margin:0;min-height:50px}
+.rad input{width:20px;height:20px;accent-color:var(--primary)}
+.rad label:has(input:checked){border-color:var(--primary);background:var(--soft)}
+.rad small{margin-inline-start:auto;color:var(--muted);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--primary);height:34px}
+.meter{height:16px;border-radius:999px;background:var(--soft);overflow:hidden;margin:10px 0}
+.meter i{display:block;height:100%;width:0;background:var(--primary);border-radius:999px;transition:width .4s}
+.meter.over i{background:var(--accent)}
+.res{font-family:var(--display);font-size:22px;font-weight:600;line-height:1.5}
+.vopts{display:grid;gap:10px;grid-template-columns:1fr}
+.vopt{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.vopt b{font-weight:600}
+.vopt small{display:block;color:var(--muted);font-size:14.5px;line-height:1.6}
+
+/* plan */
+.plan{background:var(--surface);border:2px solid var(--primary);border-radius:22px;padding:24px;box-shadow:var(--sh)}
+.plan h3{font-size:26px}
+.plan .empty{color:var(--muted);padding:14px 0}
+.plan ul{list-style:none;margin:14px 0;padding:0;display:grid;gap:10px}
+.plan li{display:grid;grid-template-columns:34px 1fr auto;gap:12px;align-items:start;border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg)}
+.plan li .n{width:34px;height:34px;border-radius:50%;background:var(--primary);color:var(--on-primary);display:grid;place-items:center;font-family:var(--display);font-weight:700}
+.plan li b{display:block;font-weight:600}
+.plan li small{color:var(--muted);font-size:14.5px}
+.plan li button{border:0;background:transparent;color:var(--bad);cursor:pointer;font:600 14.5px var(--body);min-height:36px}
+
+/* notes */
+.acc{display:grid;gap:10px}
+.acc details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 18px}
+.acc summary{cursor:pointer;font-weight:600;font-size:18px;min-height:52px;display:flex;align-items:center;gap:10px;list-style:none}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";margin-inline-start:auto;font-size:24px;color:var(--primary)}
+.acc details[open] summary::after{content:"−"}
+.acc p{color:var(--muted);padding:0 0 14px}
+
+/* intro / waiting screen */
+.intro{position:fixed;inset:0;z-index:100;background:var(--deep);color:#fff;display:grid;place-items:center;padding:24px;transition:transform .65s ease-in-out}
+.intro::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(0deg,transparent 0 47px,rgba(255,255,255,.035) 47px 48px);pointer-events:none}
+.intro.out{transform:translateY(-100%)}
+.intro[hidden]{display:none}
+.intro-in{position:relative;display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center;max-width:460px;width:100%}
+.ib-robot{width:150px;height:165px}
+.it{font-size:clamp(38px,9vw,58px);font-weight:700;color:#fff}
+.is{font-size:19px;color:var(--mint);min-height:32px}
+.dots3{display:flex;gap:8px}
+.dots3 i{width:11px;height:11px;border-radius:50%;background:#FFD27A;animation:dot 1s ease-in-out infinite}
+.dots3 i:nth-child(2){animation-delay:.15s}.dots3 i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,100%{transform:translateY(0);opacity:.5}50%{transform:translateY(-8px);opacity:1}}
+.ibar{width:min(360px,82vw);height:10px;border-radius:99px;background:rgba(255,255,255,.18);overflow:hidden}
+.ibar i{display:block;height:100%;width:0;background:var(--accent);border-radius:99px}
+.intro .btn.go{background:#fff;color:var(--deep);border-color:#fff;font-size:18px;padding:14px 30px;animation:pulse 1.4s ease-in-out infinite}
+.intro .btn.go[hidden]{display:none}
+@keyframes pulse{50%{transform:scale(1.05)}}
+.skip{background:none;border:0;color:#B9BFE0;text-decoration:underline;font:500 15px var(--body);min-height:44px;padding:0 12px;cursor:pointer}
+.skip:hover{color:#fff}
+.paused .cv-art *{animation-play-state:paused!important}
+
+/* robot animations */
+.robot{display:block;width:100%;height:100%;overflow:visible}
+.robot .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+.robot .ant{transform-box:view-box;transform-origin:100px 30px;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:rotate(10deg)}}
+.robot .mouth{transform-box:fill-box;transform-origin:center}
+.robot.talk .mouth{animation:talk .26s infinite alternate}
+@keyframes talk{from{transform:scaleY(1)}to{transform:scaleY(3.4)}}
+.robot .arm{transform-box:view-box;transform-origin:154px 150px}
+.robot.wave .arm{animation:wave .9s ease-in-out infinite alternate}
+@keyframes wave{from{transform:rotate(0)}to{transform:rotate(-55deg)}}
+.robot.float{animation:float 3.2s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-6px)}}
+
+/* journey navigation bar (click to move between sections) */
+body{padding-bottom:84px}
+.jnav{position:fixed;inset-inline:0;bottom:0;z-index:60;background:var(--surface);border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px calc(10px + env(safe-area-inset-bottom,0px))}
+.jnav[hidden]{display:none}
+.jnav .btn{min-width:118px}
+.jc{font-weight:600;color:var(--muted);font-size:15px}
+@media (prefers-reduced-motion:reduce){
+  .intro{transition:none}
+  .dots3 i,.intro .btn.go,.robot .eye,.robot .ant,.robot.float,.robot.wave .arm,.robot.talk .mouth{animation:none}
+}
+@media print{.jnav,.intro{display:none!important}}
+
+footer{margin-top:80px;background:var(--deep);color:#B9BFE0;padding:34px 0 40px;font-size:15px}
+footer b{color:#fff}
+
+/* hero art animation */
+.cv-art .door-closed{transform-box:view-box;transform-origin:470px 480px;animation:dclose 1.3s ease-in-out .6s both}
+.cv-art .door-open{transform-box:view-box;transform-origin:470px 480px;animation:dopen 1.3s ease-in-out .6s both}
+.cv-art .beam{animation:beamin .8s ease-out 1.5s both}
+.cv-art .ic{transform-box:fill-box;transform-origin:center;animation:icpop .7s cubic-bezier(.2,.9,.3,1.3) both;animation-delay:calc(var(--d) + .45s)}
+.cv-art .rarm{transform-box:view-box;transform-origin:255px 690px;animation:armup 1.2s ease-out .6s both}
+.cv-art .eye{transform-box:fill-box;transform-origin:center;animation:blink 4.5s infinite}
+@keyframes dclose{0%{transform:scaleX(1)}50%,100%{transform:scaleX(0)}}
+@keyframes dopen{0%,50%{transform:scaleX(0)}100%{transform:scaleX(1)}}
+@keyframes beamin{from{opacity:0}to{opacity:.32}}
+@keyframes icpop{from{opacity:0;transform:translateY(40px) scale(.6)}to{opacity:1;transform:none}}
+@keyframes armup{from{transform:rotate(137deg)}to{transform:rotate(0deg)}}
+@keyframes blink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+@keyframes pop{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.tasks .task,.sp-h{animation:pop .35s ease-out both}
+
+@media (min-width:700px){
+  .tasks{grid-template-columns:1fr 1fr}
+  .tgrid{grid-template-columns:1fr 1fr}
+  .sites{grid-template-columns:1fr 1fr}
+  .vopts{grid-template-columns:1fr 1fr}
+}
+@media (min-width:960px){
+  .hero .wrap{grid-template-columns:1.05fr .95fr;gap:40px;padding-block:64px 72px}
+  .tgrid{grid-template-columns:repeat(3,1fr)}
+  .flow{grid-template-columns:.9fr 1.1fr}
+  .bld{grid-template-columns:1fr 1fr}
+  .calc{grid-template-columns:1fr 1fr}
+  .sites{grid-template-columns:repeat(3,1fr)}
+  section.sec{padding-top:96px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .cv-art .door-closed{display:none}
+  .cv-art *{animation:none!important}
+  .tasks .task,.sp-h{animation:none}
+}
+@media print{
+  body *{visibility:hidden}
+  #planPrint,#planPrint *{visibility:visible}
+  #planPrint{position:absolute;inset:0;padding:24px;border:0;box-shadow:none}
+  #planPrint .noprint{display:none}
+}
+</style>
+</head>
+<body class="paused">
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-label="بداية الرحلة">
+  <div class="intro-in">
+    <div class="ib-robot" id="introRobot"><svg class="robot wave float" viewBox="0 0 200 220" role="img" aria-label="روبوت الدليل"><g class="ant"><line x1="100" y1="30" x2="100" y2="14" stroke="#14163F" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="10" r="8" fill="#F2A20F" stroke="#14163F" stroke-width="3"/></g><rect x="26" y="64" width="16" height="32" rx="8" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="158" y="64" width="16" height="32" rx="8" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="40" y="30" width="120" height="98" rx="32" fill="#3A3FCB" stroke="#14163F" stroke-width="4.5"/><rect x="54" y="46" width="92" height="66" rx="22" fill="#14163F"/><ellipse class="eye" cx="80" cy="74" rx="9" ry="11" fill="#6EE7C8"/><ellipse class="eye" cx="120" cy="74" rx="9" ry="11" fill="#6EE7C8"/><rect class="mouth" x="88" y="94" width="24" height="4" rx="2" fill="#6EE7C8"/><rect x="58" y="138" width="84" height="68" rx="26" fill="#5B60E0" stroke="#14163F" stroke-width="4.5"/><circle cx="100" cy="172" r="11" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="34" y="150" width="20" height="46" rx="10" fill="#5B60E0" stroke="#14163F" stroke-width="4"/><g class="arm"><rect x="146" y="150" width="20" height="46" rx="10" fill="#5B60E0" stroke="#14163F" stroke-width="4"/></g></svg></div>
+    <h2 class="it">رحلة التطبيق</h2>
+    <p class="is" id="introStatus" aria-live="polite">نجهّز رحلتك التطبيقية</p>
+    <div class="dots3" aria-hidden="true"><i></i><i></i><i></i></div>
+    <div class="ibar" id="ibarWrap" role="progressbar" aria-label="تقدم التحضير" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="ibar"></i></div>
+    <button class="skip" id="introSkip" type="button">تخطَّ وادخل الآن</button>
+  </div>
+</div>
+
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top">
+      <span class="mark"><svg viewBox="0 0 24 24"><path d="M3 9l9-5 9 5-9 5-9-5z"/><path d="M7 11.5V16c0 1.4 2.2 3 5 3s5-1.6 5-3v-4.5"/></svg></span>
+      <span><b>مدارس أجيال المواهب</b><small>التطوير المهني</small></span>
+    </a>
+    <a class="planpill" href="#plan" aria-label="خطتي للمحاضرة">خطتي <i id="planCount">٠</i></a>
+  </div>
+  <div class="prog" id="prog"></div>
+</header>
+<div class="strip"><div class="wrap"><nav aria-label="أقسام الصفحة" id="secnav">
+  <a href="#tasks">المهمات</a>
+  <a href="#tools">الأدوات</a>
+  <a href="#steps">الخطوات</a>
+  <a href="#builder">مولّد الطلب</a>
+  <a href="#games">مواقع الألعاب</a>
+  <a href="#video">الفيديو</a>
+  <a href="#plan">خطتي</a>
+  <a href="#notes">قبل أن تبدأ</a>
+</nav></div></div>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="kick">دليل المعلم التطبيقي</span>
+      <h1>افتح الباب<span>واصنع منتجك التعليمي بنفسك.</span></h1>
+      <p class="sub">مهمات جاهزة لكل مادة، بأدوات ذكاء اصطناعي مجانية: لعبة تفاعلية، وورقة عمل، وفيديو، وصور. اختر مادتك، وانسخ الطلب الجاهز، وابنِ خطتك للمحاضرة.</p>
+      <div class="cta">
+        <a class="btn" href="#tasks">اختر مادتك</a>
+        <a class="btn ghost" href="#builder">ابنِ طلبك الآن</a>
+      </div>
+      <div class="stats" id="stats" aria-label="أرقام سريعة">
+        <div><b data-n="0" id="sTasks">٠</b><small>مهمة تطبيقية</small></div>
+        <div><b data-n="0" id="sSubs">٠</b><small>مادة</small></div>
+        <div><b data-n="0" id="sTools">٠</b><small>أداة</small></div>
+        <div><b data-n="0" id="sSites">٠</b><small>موقع ألعاب</small></div>
+      </div>
+    </div>
+    <div class="art"><svg viewBox="0 0 960 900" class="cv-art" role="img" aria-label="روبوت يفتح الباب">
+<circle cx="120" cy="120" r="150" fill="#1E2260"/>
+<rect x="0" y="790" width="960" height="110" fill="#0E1030"/>
+<rect x="452" y="152" width="396" height="640" rx="12" fill="#C9CCEE"/>
+<rect x="470" y="170" width="360" height="620" fill="#FFF3C9"/>
+<rect x="470" y="700" width="360" height="90" fill="#FFE6A0"/>
+<circle cx="650" cy="430" r="150" fill="#fff" opacity=".55"/>
+<polygon class="beam" points="470,790 830,790 1010,900 300,900" fill="#FFD86B" opacity=".32"/>
+<g transform="translate(500,290)"><g class="ic" style="--d:1.5s"><rect width="124" height="76" rx="32" fill="#3A3FCB" stroke="#14163F" stroke-width="5"/><rect x="24" y="33" width="30" height="10" rx="3" fill="#fff"/><rect x="34" y="23" width="10" height="30" rx="3" fill="#fff"/><circle cx="90" cy="31" r="8" fill="#F2A20F"/><circle cx="106" cy="46" r="8" fill="#6EE7C8"/></g></g><g transform="translate(690,262)"><g class="ic" style="--d:1.75s"><rect width="98" height="126" rx="10" fill="#fff" stroke="#14163F" stroke-width="5"/><rect x="14" y="20" width="70" height="9" rx="4" fill="#3A3FCB"/><rect x="14" y="42" width="70" height="9" rx="4" fill="#C9CCEE"/><rect x="14" y="62" width="50" height="9" rx="4" fill="#C9CCEE"/><path d="M16 100 l11 11 l24 -24" fill="none" stroke="#1B8F6B" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></g></g><g transform="translate(495,500)"><g class="ic" style="--d:2.0s"><rect width="142" height="98" rx="18" fill="#14163F" stroke="#14163F" stroke-width="5"/><path d="M58 28 L58 70 L94 49 Z" fill="#6EE7C8"/></g></g><g transform="translate(685,510)"><g class="ic" style="--d:2.25s"><rect width="132" height="102" rx="14" fill="#F2A20F" stroke="#14163F" stroke-width="5"/><circle cx="98" cy="32" r="12" fill="#fff"/><path d="M8 94 L48 46 L78 80 L94 64 L124 94 Z" fill="#3A3FCB"/></g></g><g transform="translate(600,235)"><g class="ic" style="--d:2.4s"><path d="M0,-15 L4.5,-4.5 L15,0 L4.5,4.5 L0,15 L-4.5,4.5 L-15,0 L-4.5,-4.5 Z" fill="#F2A20F"/></g></g><g transform="translate(812,440)"><g class="ic" style="--d:2.5s"><path d="M0,-15 L4.5,-4.5 L15,0 L4.5,4.5 L0,15 L-4.5,4.5 L-15,0 L-4.5,-4.5 Z" fill="#F2A20F"/></g></g><g transform="translate(520,690)"><g class="ic" style="--d:2.6s"><path d="M0,-15 L4.5,-4.5 L15,0 L4.5,4.5 L0,15 L-4.5,4.5 L-15,0 L-4.5,-4.5 Z" fill="#F2A20F"/></g></g><g transform="translate(800,700)"><g class="ic" style="--d:2.7s"><path d="M0,-15 L4.5,-4.5 L15,0 L4.5,4.5 L0,15 L-4.5,4.5 L-15,0 L-4.5,-4.5 Z" fill="#3A3FCB"/></g></g>
+<g class="door-closed"><rect x="470" y="170" width="360" height="620" fill="#3A3FCB" stroke="#14163F" stroke-width="6"/><rect x="500" y="205" width="300" height="200" fill="none" stroke="#5B60E0" stroke-width="6"/><rect x="500" y="440" width="300" height="310" fill="none" stroke="#5B60E0" stroke-width="6"/><circle cx="795" cy="500" r="15" fill="#F2A20F" stroke="#14163F" stroke-width="4"/></g>
+<g class="door-open"><polygon points="470,170 352,128 352,802 470,790" fill="#3A3FCB" stroke="#14163F" stroke-width="6" stroke-linejoin="round"/><polygon points="456,214 370,186 370,440 456,448" fill="#5B60E0"/><polygon points="456,482 370,470 370,772 456,762" fill="#5B60E0"/><circle cx="374" cy="565" r="15" fill="#F2A20F" stroke="#14163F" stroke-width="4"/></g>
+<g transform="translate(20,440) scale(1.7)"><g class="ant"><line x1="100" y1="30" x2="100" y2="14" stroke="#14163F" stroke-width="5" stroke-linecap="round"/><circle cx="100" cy="10" r="8" fill="#F2A20F" stroke="#14163F" stroke-width="3"/></g><rect x="26" y="64" width="16" height="32" rx="8" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="158" y="64" width="16" height="32" rx="8" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="40" y="30" width="120" height="98" rx="32" fill="#3A3FCB" stroke="#14163F" stroke-width="4.5"/><rect x="54" y="46" width="92" height="66" rx="22" fill="#14163F"/><ellipse class="eye" cx="84" cy="74" rx="9" ry="11" fill="#6EE7C8"/><ellipse class="eye" cx="124" cy="74" rx="9" ry="11" fill="#6EE7C8"/><path d="M88 94 Q104 106 120 94" fill="none" stroke="#6EE7C8" stroke-width="5" stroke-linecap="round"/><rect x="58" y="138" width="84" height="68" rx="26" fill="#5B60E0" stroke="#14163F" stroke-width="4.5"/><circle cx="100" cy="172" r="11" fill="#F2A20F" stroke="#14163F" stroke-width="3.5"/><rect x="34" y="150" width="20" height="46" rx="10" fill="#5B60E0" stroke="#14163F" stroke-width="4"/></g>
+<g class="rarm"><line x1="255" y1="690" x2="372" y2="565" stroke="#14163F" stroke-width="46" stroke-linecap="round"/><line x1="255" y1="690" x2="372" y2="565" stroke="#5B60E0" stroke-width="32" stroke-linecap="round"/><circle cx="372" cy="565" r="24" fill="#F2A20F" stroke="#14163F" stroke-width="5"/></g>
+</svg></div>
+  </div>
+</section>
+
+<!-- 1 TASKS -->
+<section class="sec" id="tasks">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">١</span><h2>اختر مادتك، وخذ مهمتك</h2><p>لكل مادة مهمات تطبيقية. افتح الخطوات، وانسخ الطلب الجاهز، وأضف ما يعجبك إلى خطتك.</p></div>
+    <div class="subs" id="subs" role="tablist" aria-label="المواد"></div>
+    <div class="sp" id="sp"></div>
+  </div>
+</section>
+
+<!-- 2 TOOLS -->
+<section class="sec" id="tools">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٢</span><h2>الأدوات: ماذا تفعل وما حدودها</h2><p>اختر ما تريد صنعه، فتظهر الأدوات المناسبة. الخطط المجانية محدودة وتتغير.</p></div>
+    <div class="filters" id="tfilters"></div>
+    <div class="tgrid" id="tgrid"></div>
+  </div>
+</section>
+
+<!-- 3 STEPS -->
+<section class="sec" id="steps">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٣</span><h2>الخطوات الخمس لكل مهمة</h2><p>الطريقة نفسها تصلح لأي لعبة أو ورقة أو فيديو. اضغط على أي خطوة.</p></div>
+    <div class="flow">
+      <div class="steps" id="stepList" role="tablist" aria-label="الخطوات"></div>
+      <div class="stepbody" id="stepBody" role="tabpanel"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 BUILDER -->
+<section class="sec" id="builder">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٤</span><h2>مولّد الطلب</h2><p>عبّئ الخانات فيُكتب لك الطلب كاملاً بتهيئته (Prompt Priming) والطلب نفسه. انسخه والصقه في أي أداة.</p></div>
+    <div class="bld">
+      <div class="card">
+        <label for="bSub">المادة</label><select class="f" id="bSub"></select>
+        <label for="bGrade">المرحلة</label>
+        <select class="f" id="bGrade">
+          <option>رياض الأطفال</option><option>الابتدائية الدنيا</option><option selected>الابتدائية العليا</option><option>المتوسطة</option><option>الثانوية</option>
+        </select>
+        <label for="bLevel">مستوى الطلاب</label>
+        <select class="f" id="bLevel"><option>ضعيف</option><option selected>متوسط</option><option>متقدم</option><option>متفاوت</option></select>
+        <label for="bTopic">الموضوع</label>
+        <input class="f" id="bTopic" type="text" value="جمع الكسور المتشابهة" placeholder="مثال: الدورة المائية">
+        <label for="bType">ما الذي تريد صنعه؟</label>
+        <select class="f" id="bType">
+          <option value="game">لعبة تفاعلية (HTML)</option>
+          <option value="sheet">ورقة عمل</option>
+          <option value="video">سيناريو فيديو</option>
+          <option value="image">وصف صور</option>
+          <option value="py">برنامج Python</option>
+          <option value="java">برنامج Java</option>
+        </select>
+        <label class="chk"><input type="checkbox" id="bPts" checked> أضف نقاطاً وشارات (تحفيز)</label>
+        <label class="chk"><input type="checkbox" id="bRtl" checked> واجهة عربية من اليمين لليسار</label>
+      </div>
+      <div class="card out">
+        <h4>١. التهيئة (أرسلها أولاً)</h4>
+        <div class="pbox" id="oPrime"></div>
+        <button class="btn sm" type="button" data-copy="oPrime">انسخ التهيئة</button>
+        <h4 style="margin-top:16px">٢. الطلب (أرسله ثانياً)</h4>
+        <div class="pbox" id="oReq"></div>
+        <button class="btn sm" type="button" data-copy="oReq">انسخ الطلب</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 GAMES -->
+<section class="sec" id="games">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٥</span><h2>مواقع مقترحة لصنع الألعاب التفاعلية</h2><p>مواقع جاهزة إن لم ترد كتابة كود. كلها بخطط مجانية محدودة.</p></div>
+    <div class="sites" id="sites"></div>
+  </div>
+</section>
+
+<!-- 6 VIDEO -->
+<section class="sec" id="video">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٦</span><h2>الفيديو المجاني: احسب رصيدك</h2><p>يمنح Google Flow رصيداً يومياً مجانياً. اختر الجودة وعدد المقاطع، وانظر هل يكفي.</p></div>
+    <div class="calc">
+      <div class="card">
+        <div class="rad" id="qual" role="radiogroup" aria-label="جودة المقطع">
+          <label><input type="radio" name="q" value="10" checked> خفيف (Lite) <small>١٠ أرصدة للمقطع</small></label>
+          <label><input type="radio" name="q" value="20"> سريع (Fast) <small>٢٠ رصيداً للمقطع</small></label>
+          <label><input type="radio" name="q" value="100"> جودة عالية (Quality) <small>١٠٠ رصيد للمقطع</small></label>
+        </div>
+        <label for="clips">عدد المقاطع: <b id="clipsN">٤</b></label>
+        <input type="range" id="clips" min="1" max="12" value="4">
+      </div>
+      <div class="card">
+        <div class="res" id="calcRes"></div>
+        <div class="meter" id="meter"><i id="meterI"></i></div>
+        <p id="calcNote" style="color:var(--muted);font-size:15.5px"></p>
+      </div>
+    </div>
+    <h3 class="rv" style="margin:34px 0 14px;font-size:22px">بدائل أخرى للفيديو</h3>
+    <div class="vopts" id="vopts"></div>
+  </div>
+</section>
+
+<!-- 7 PLAN -->
+<section class="sec" id="plan">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٧</span><h2>خطتي للمحاضرة</h2><p>المهمات التي أضفتَها تظهر هنا. انسخ الخطة أو اطبعها.</p></div>
+    <div class="plan" id="planPrint">
+      <h3>خطتي التطبيقية — مدارس أجيال المواهب</h3>
+      <div id="planBody"></div>
+      <div class="acts noprint">
+        <button class="btn" type="button" id="planCopy">انسخ الخطة</button>
+        <button class="btn ghost" type="button" id="planPrintBtn">اطبع أو احفظ PDF</button>
+        <button class="btn ghost" type="button" id="planClear">امسح الخطة</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8 NOTES -->
+<section class="sec" id="notes">
+  <div class="wrap">
+    <div class="sh rv"><span class="no">٨</span><h2>قبل أن تبدأ</h2><p>ست ملاحظات تحميك من الأخطاء الشائعة.</p></div>
+    <div class="acc" id="acc"></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap"><b>مدارس أجيال المواهب — التطوير المهني.</b> دليل المهمات التطبيقية. الخطط المجانية للأدوات تتغير، فراجعها قبل استخدامها مع الطلاب.</div>
+</footer>
+
+<div class="jnav" id="jnav" hidden role="navigation" aria-label="التنقل بين الأقسام">
+  <button class="btn ghost sm" id="jPrev" type="button">‹ السابق</button>
+  <span class="jc" id="jCount">البداية</span>
+  <button class="btn sm" id="jNext" type="button">التالي ›</button>
+</div>
+
+<script>
+(function(){
+  function ar(n){ return String(n).replace(/\d/g, function(d){ return '٠١٢٣٤٥٦٧٨٩'.charAt(+d); }); }
+  function $(s, r){ return (r || document).querySelector(s); }
+  function esc(t){ return String(t).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+  /* ---------- icons (flat, drawn inline) ---------- */
+  var ICON = {
+    math:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="6" width="52" height="52" rx="14" fill="currentColor" opacity=".18"/><path d="M18 24h14M25 17v14M36 22h12M36 30h12M18 46h28" stroke="currentColor" stroke-width="5" stroke-linecap="round" fill="none"/></svg>',
+    science:'<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M24 8h16M27 8v16L13 50a6 6 0 0 0 5 9h28a6 6 0 0 0 5-9L37 24V8" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"/><circle cx="28" cy="46" r="3.5" fill="currentColor"/><circle cx="38" cy="40" r="2.5" fill="currentColor"/></svg>',
+    arabic:'<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 16c-6-5-16-6-24-4v36c8-2 18-1 24 4 6-5 16-6 24-4V12c-8-2-18-1-24 4z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M32 16v36" stroke="currentColor" stroke-width="4"/></svg>',
+    english:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="10" width="52" height="44" rx="12" fill="currentColor" opacity=".18"/><text x="32" y="43" text-anchor="middle" font-family="IBM Plex Sans Arabic, sans-serif" font-weight="700" font-size="26" fill="currentColor">Aa</text></svg>',
+    social:'<svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="24" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4"/><path d="M8 32h48M32 8c-10 8-10 40 0 48M32 8c10 8 10 40 0 48" fill="none" stroke="currentColor" stroke-width="3.5"/></svg>',
+    islamic:'<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M12 54V38a20 20 0 0 1 40 0v16z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><path d="M32 18v-6M28 12h8" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M26 54V44a6 6 0 0 1 12 0v10" fill="none" stroke="currentColor" stroke-width="4"/></svg>',
+    computer:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="12" width="48" height="32" rx="6" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4"/><path d="M4 52h56" stroke="currentColor" stroke-width="4" stroke-linecap="round"/><path d="M26 22l-6 6 6 6M38 22l6 6-6 6" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+    kg:'<svg viewBox="0 0 64 64" aria-hidden="true"><rect x="6" y="32" width="24" height="24" rx="5" fill="currentColor" fill-opacity=".25" stroke="currentColor" stroke-width="3.5"/><rect x="34" y="32" width="24" height="24" rx="5" fill="currentColor" fill-opacity=".25" stroke="currentColor" stroke-width="3.5"/><rect x="20" y="8" width="24" height="24" rx="5" fill="currentColor" fill-opacity=".45" stroke="currentColor" stroke-width="3.5"/><circle cx="32" cy="20" r="4" fill="currentColor"/></svg>',
+    art:'<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6C17 6 6 17 6 31s11 27 26 27c5 0 7-3 6-7-1-3 1-6 5-6h6c6 0 9-4 9-9C58 17 47 6 32 6z" fill="currentColor" fill-opacity=".18" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/><circle cx="20" cy="30" r="4" fill="currentColor"/><circle cx="30" cy="20" r="4" fill="currentColor"/><circle cx="42" cy="22" r="4" fill="currentColor"/></svg>',
+    all:'<svg viewBox="0 0 64 64" aria-hidden="true"><path d="M32 6l6 18 18 6-18 6-6 18-6-18-18-6 18-6z" fill="currentColor" fill-opacity=".25" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg>'
+  };
+
+  /* ---------- data: subjects and tasks ---------- */
+  var SUBJECTS = [
+    {id:'math', name:'الرياضيات', c:'#3A3FCB', intro:'ألعاب تكشف الأخطاء الشائعة، وأوراق عمل بمستويات.', tasks:[
+      {id:'m1', title:'لعبة «صيّاد الأخطاء»', type:'لعبة', tools:['Claude','Gemini'], why:'خمسة حلول في كل منها خطأ واحد يكتشفه الطلاب ويفسّرونه.',
+       steps:['هيّئ الأداة بمرحلتك وموضوعك (Prompt Priming).','اطلب لعبة HTML واحدة بالطلب الجاهز.','شغّلها من المعاينة، أو احفظ الكود بامتداد html وافتحه في المتصفح.','جرّبها مع طالب وعدّل الصعوبة.','راجع صحة الحلول والأخطاء قبل العرض.'],
+       prompt:'أنشئ لعبة تفاعلية بملف HTML واحد بعنوان «صيّاد الأخطاء» لطلاب [الصف] في الرياضيات، موضوعها: [الموضوع]. تعرض اللعبة ٥ حلولاً مكتوبة فيها خطأ واحد لكل حل، ويضغط الطالب على السطر الخاطئ. أضف نقاطاً وتغذية راجعة فورية وشرحاً قصيراً للخطأ. اجعل الواجهة عربية من اليمين لليسار بألوان مبهجة وأزرار كبيرة، ولا تستخدم مكتبات خارجية.'},
+      {id:'m2', title:'ورقة عمل بثلاثة مستويات', type:'ورقة عمل', tools:['ChatGPT','Gemini'], why:'المحتوى نفسه بمستوى أساسي ومتوسط وتحدٍّ، مع نموذج الإجابة.',
+       steps:['هيّئ الأداة بمرحلتك ومستوى طلابك.','اطلب الورقة بثلاثة مستويات مع نموذج الإجابة.','انسخها إلى Word أو Canva ونسّقها.','راجع الأسئلة والإجابات.','صدّر PDF واطبع.'],
+       prompt:'أنشئ ورقة عمل في [الموضوع] لطلاب [الصف] بثلاثة مستويات (أساسي، متوسط، تحدٍّ)، في كل مستوى ٥ أسئلة متدرجة، ثم أضف صفحة منفصلة بنموذج الإجابة. اكتبها بالعربية الفصحى المبسطة بتنسيق جاهز للطباعة.'}
+    ]},
+    {id:'science', name:'العلوم', c:'#1B8F6B', intro:'فيديو قصير يشرح ظاهرة، وملخص من كتابك.', tasks:[
+      {id:'s1', title:'فيديو قصير عن ظاهرة علمية', type:'فيديو', tools:['Google Flow','Gemini'], why:'أربعة مشاهد قصيرة تجمعها في فيديو واحد.',
+       steps:['اكتب السيناريو بأداة نصية بعد تهيئتها.','انسخ وصف كل مشهد إلى Google Flow (نص إلى فيديو).','اختر النمط الخفيف أو السريع لتوفّر رصيدك اليومي.','نزّل المقاطع ورتّبها في Vids أو Canva.','أضف التعليق الصوتي وراجع الدقة العلمية.'],
+       prompt:'اكتب سيناريو فيديو مدته ٣٠ ثانية عن [الموضوع] لطلاب [الصف] مقسماً إلى ٤ مشاهد، كل مشهد ٨ ثوانٍ. لكل مشهد اكتب: وصفاً بصرياً دقيقاً بالإنجليزية لاستخدامه في أداة الفيديو، وجملة التعليق بالعربية. اجعل المشاهد بسيطة وواضحة ومناسبة للعمر، بلا نصوص مكتوبة داخل الصورة.'},
+      {id:'s2', title:'ملخص صوتي ومرئي من فصل الكتاب', type:'فيديو', tools:['NotebookLM'], why:'ارفع فصلك واحصل على ملخص ومراجعة مبنيين على مصدرك أنت.',
+       steps:['أنشئ دفتراً جديداً وارفع فصل الكتاب أو ملفاتك.','من قسم Studio اختر ملخصاً صوتياً أو مرئياً.','أضف توجيهاً: المرحلة والتركيز وعدد الأسئلة.','استمع وراجع الملخص مع الكتاب.','شاركه مع طلابك إن سمحت سياسة مدرستك.'],
+       prompt:'أنشئ ملخصاً موجهاً لطلاب [الصف] يركّز على [الموضوع] بلغة بسيطة، وأنهِه بـ ٥ أسئلة للنقاش من نص المصدر فقط.'}
+    ]},
+    {id:'arabic', name:'اللغة العربية', c:'#B0482E', intro:'ألغاز مفردات، وقصص مصورة.', tasks:[
+      {id:'a1', title:'لعبة «لغز المفردات»', type:'لعبة', tools:['Claude','ChatGPT'], why:'كلمة مخفية الحروف مع تلميحات تقلّل النقاط كلما استُخدمت.',
+       steps:['هيّئ الأداة بمرحلتك.','اطلب اللعبة بالطلب الجاهز.','شغّلها وجرّب ١٠ كلمات.','أضف كلماتك من الدرس.','راجع التشكيل والإملاء.'],
+       prompt:'أنشئ لعبة HTML واحدة بعنوان «لغز المفردات» لطلاب [الصف] في اللغة العربية، موضوعها: [الموضوع]. تظهر كلمة مخفية الحروف مع ٣ تلميحات تتدرج من الأصعب إلى الأسهل، وكلما احتاج الطالب تلميحاً قلّت نقاطه. أضف ١٠ كلمات ومؤقتاً وشارات إنجاز، بواجهة عربية من اليمين لليسار.'},
+      {id:'a2', title:'قصة مصورة قصيرة', type:'صور', tools:['Gemini'], why:'ست صور توضيحية لقصة بشخصية ثابتة المظهر.',
+       steps:['اطلب القصة ووصف كل صورة بأداة نصية.','ولّد الصور واحدة بعد الأخرى في Gemini.','كرر وصف الشخصية في كل طلب لتبقى متشابهة.','رتّب الصور في Canva أو عرض تقديمي.','راجع مناسبة الصور للعمر والثقافة.'],
+       prompt:'اكتب قصة قصيرة من ٦ مشاهد لطلاب [الصف] عن [الموضوع]. لكل مشهد اكتب وصفاً دقيقاً لصورة توضيحية ملوّنة بأسلوب رسوم متحركة لطيف، بلا نصوص داخل الصورة، مع تثبيت وصف الشخصية الرئيسية في كل مشهد.'}
+    ]},
+    {id:'english', name:'اللغة الإنجليزية', c:'#0F7C90', intro:'غرف هروب بالمفردات.', tasks:[
+      {id:'e1', title:'غرفة هروب بالمفردات', type:'لعبة', tools:['Claude','Eduaide'], why:'كل إجابة صحيحة تفتح «باباً» جديداً.',
+       steps:['هيّئ الأداة بمستوى طلابك.','اطلب اللعبة بالطلب الجاهز.','شغّلها وجرّب الغرف الخمس.','عدّل المفردات.','راجع الإملاء والمعاني.'],
+       prompt:'Create a single-file HTML escape-room game for [grade] English learners on the topic: [topic]. There are 5 rooms; each room unlocks when the student answers a vocabulary question correctly. Add hints, a score, and a final congratulation screen. Use a friendly colorful design and no external libraries.'}
+    ]},
+    {id:'social', name:'الاجتماعيات', c:'#8A5300', intro:'ألعاب قرارات، وملخصات مرئية.', tasks:[
+      {id:'ss1', title:'لعبة «رحلة عبر الزمن»', type:'لعبة', tools:['Claude','Gemini'], why:'خمس محطات في كل منها موقف وثلاثة قرارات ونتيجة.',
+       steps:['هيّئ الأداة بموضوعك التاريخي أو الجغرافي.','اطلب اللعبة بالطلب الجاهز.','شغّلها وجرّب القرارات كلها.','تحقق من كل معلومة تاريخية.','اعرضها على الطلاب.'],
+       prompt:'أنشئ لعبة HTML اسمها «رحلة عبر الزمن» لطلاب [الصف] في الاجتماعيات عن [الموضوع]: يمر اللاعب بـ ٥ محطات، وفي كل محطة موقف تاريخي وثلاثة قرارات، وكل قرار يغيّر النقاط وتظهر له نتيجته مع معلومة صحيحة. لا تجسّد شخصيات حقيقية حساسة، وبواجهة عربية من اليمين لليسار.'},
+      {id:'ss2', title:'فيديو موجز لحدث أو مكان', type:'فيديو', tools:['Google Flow','NotebookLM'], why:'مشاهد عامة (خرائط ومناظر) بلا تجسيد أشخاص حقيقيين.',
+       steps:['اكتب السيناريو من مصدرك الموثوق.','ولّد المشاهد في Flow.','رتّبها وأضف التعليق.','راجع الحقائق مع الكتاب.','اعرض الفيديو وناقش الطلاب.'],
+       prompt:'اكتب ملخصاً مرئياً من ٤ مشاهد عن [الموضوع] لطلاب [الصف]، مستنداً إلى النص الذي سأضعه بعد هذا الطلب فقط. لكل مشهد وصف بصري بالإنجليزية (خرائط، مناظر عامة، رموز) بلا أشخاص حقيقيين، وجملة تعليق بالعربية.'}
+    ]},
+    {id:'islamic', name:'التربية الإسلامية', c:'#2F6F52', intro:'ترتيب خطوات وربط مفاهيم، بنصوص توثّقها أنت.', tasks:[
+      {id:'i1', title:'لعبة ترتيب الخطوات', type:'لعبة', tools:['Claude','Gemini'], why:'سحب وإفلات لخطوات عبادة أو سلوك، بمحتوى تضعه أنت.',
+       steps:['اجمع الخطوات من مصدرك الشرعي الموثوق.','اطلب لعبة تقرأ الخطوات من قائمة تعدّلها بنفسك.','الصق خطواتك في القائمة.','شغّل اللعبة وجرّبها.','اعرض المحتوى على مختص قبل استخدامه.'],
+       prompt:'أنشئ لعبة HTML لسحب وإفلات الخطوات وترتيبها لموضوع [الموضوع] لطلاب [الصف] في التربية الإسلامية، مع بطاقات تعريفية للمفاهيم. لا تكتب نصوصاً شرعية من عندك؛ سأضع أنا النصوص الموثقة. اجعل الكود يقرأ الخطوات من مصفوفة واضحة أعدّلها بنفسي.',
+       caution:'لا تطلب من الذكاء الاصطناعي كتابة آيات أو أحاديث أو أحكام؛ فقد يخطئ. ضع أنت النصوص الموثقة، وراجعها مع مختص.'}
+    ]},
+    {id:'computer', name:'الحاسب والتقنية', c:'#5B3DF5', intro:'ألعاب برمجية بسيطة يعدّلها الطلاب.', tasks:[
+      {id:'c1', title:'لعبة «احزر الرقم» بلغة Python', type:'كود', tools:['Claude','ChatGPT','Google Colab'], why:'يتعلم الطلاب الشروط والحلقات بتعديل لعبة تعمل.',
+       steps:['اطلب الكود بتعليقات عربية.','افتح دفتراً جديداً في Google Colab.','الصق الكود واضغط تشغيل.','اطلب من الطلاب تغيير المدى وعدد المحاولات.','ناقش ماذا تغيّر في النتيجة.'],
+       prompt:'اكتب برنامج Python بسيطاً للعبة «احزر الرقم» لطلاب [الصف]: يختار الحاسوب رقماً بين ١ و ١٠٠، ويعطي تلميحاً أكبر أو أصغر، ويحسب المحاولات. أضف تعليقات عربية على كل سطر، ثم اقترح ٣ تعديلات يجربها الطلاب.'},
+      {id:'c2', title:'اللعبة نفسها بلغة Java', type:'كود', tools:['Claude','ChatGPT','OnlineGDB'], why:'المقارنة بين لغتين تُقرّب مفهوم البرمجة.',
+       steps:['اطلب الكود في صف واحد باسم Main.','افتح موقعاً لتشغيل Java عبر المتصفح.','الصق الكود وشغّله.','قارن مع نسخة Python.','عدّل الشروط مع الطلاب.'],
+       prompt:'اكتب برنامج Java بسيطاً في صف واحد باسم Main للعبة «احزر الرقم» لطلاب [الصف]: رقم سري بين ١ و ١٠٠ وتلميحات أكبر أو أصغر وعدّاد محاولات. أضف تعليقات عربية وأعطني ٣ أفكار لتعديلها.'}
+    ]},
+    {id:'kg', name:'رياض الأطفال والصفوف الأولى', c:'#D9467A', intro:'بطاقات ملوّنة وألعاب بأزرار كبيرة.', tasks:[
+      {id:'k1', title:'بطاقات صور وألوان', type:'صور', tools:['Gemini'], why:'ست بطاقات مصورة بسيطة لموضوع واحد.',
+       steps:['اكتب الموضوع وعمر الأطفال.','ولّد صورة لكل بطاقة بخلفية بيضاء بسيطة.','ضعها في Canva أو عرض تقديمي.','اطبعها واستخدمها في ركن التعلم.','راجع أن الصور آمنة ومناسبة.'],
+       prompt:'صف لي ٦ بطاقات صور ملوّنة لأطفال [الصف] عن [الموضوع]، كل بطاقة تحتوي عنصراً واحداً واضحاً على خلفية بيضاء بسيطة بأسلوب رسوم لطيفة، بلا نصوص داخل الصورة، لأولّدها صورة صورة.'},
+      {id:'k2', title:'لعبة مطابقة بأزرار كبيرة', type:'لعبة', tools:['Claude','Gemini'], why:'تصلح للمس على الجوال واللوحي.',
+       steps:['هيّئ الأداة بعمر الأطفال.','اطلب اللعبة بأزرار كبيرة.','شغّلها على اللوحي.','جرّبها مع طفل واحد.','عدّل الألوان والأصوات.'],
+       prompt:'أنشئ لعبة HTML للمطابقة لأطفال [الصف] عن [الموضوع]: ٦ أزواج من الأشكال أو الألوان، بأزرار كبيرة وألوان مبهجة، مع رسالة تشجيع بسيطة عند كل مطابقة صحيحة. بلا نصوص طويلة، وبواجهة عربية.'}
+    ]},
+    {id:'art', name:'الفنون', c:'#C2410C', intro:'صور مرجعية وتحديات وصف.', tasks:[
+      {id:'r1', title:'مقارنة أساليب الرسم بصور مولّدة', type:'صور', tools:['Gemini'], why:'المشهد نفسه بأساليب مختلفة، ثم تحدي «صف اللوحة».',
+       steps:['اختر مشهداً بسيطاً.','ولّد الصورة بأربعة أساليب.','اعرضها وناقش الفروق.','اطلب من الطلاب وصف الأسلوب بكلماتهم.','اربط النقاش بأعمال حقيقية.'],
+       prompt:'اكتب ٤ أوصاف لصور لنفس المشهد: [الموضوع]، كل وصف بأسلوب فني مختلف (ألوان مائية، رسم بالفحم، فن تجريدي، رسوم متحركة)، لأولّدها وأقارن بينها مع طلاب [الصف].'}
+    ]},
+    {id:'all', name:'كل المواد', c:'#3A3FCB', intro:'نظام تحفيز يصلح لأي صف.', tasks:[
+      {id:'g1', title:'لوحة نقاط وشارات وتحدٍّ أسبوعي', type:'تحفيز', tools:['Claude','ChatGPT'], why:'صفحة HTML تعرض نقاط الفرق وشارات الإنجاز.',
+       steps:['اختر أسماء الفرق دون أسماء طلاب حقيقية.','اطلب اللوحة بالطلب الجاهز.','شغّلها على شاشة الصف.','حدّث النقاط في الكود أو القائمة.','غيّر التحدي الأسبوعي.'],
+       prompt:'أنشئ صفحة HTML عربية لوحة تحفيز لصف [الصف]: جدول نقاط لـ ٤ فرق بأسماء عامة، وشارات إنجاز (٣ مستويات)، وبطاقة «تحدي الأسبوع» أعدّلها بسهولة. أضف أزراراً لزيادة النقاط ونقصها وحركة احتفال بسيطة.'}
+    ]}
+  ];
+
+  var TOOLS = [
+    {n:'Claude', c:'#B0482E', st:'free', stl:'مجاني بحدود', cats:['games','sheet','code'], d:'يكتب ألعاب HTML مع معاينة داخل المحادثة، وأوراق العمل، وأكواد Python وJava.', lim:'الحد اليومي للرسائل محدود. تشغيل Python وJava يحتاج موقعاً خارجياً.'},
+    {n:'ChatGPT', c:'#1B8F6B', st:'free', stl:'مجاني بحدود', cats:['games','sheet','code'], d:'يكتب كود الألعاب وأوراق العمل والنصوص.', lim:'انسخ كود HTML إلى ملف. قد تكون الصور محدودة في الخطة المجانية.'},
+    {n:'Gemini', c:'#3A3FCB', st:'free', stl:'مجاني بحدود', cats:['games','sheet','image'], d:'دردشة وتوليد صور وصوت وبحث خفيف، مع حدود يومية.', lim:'توليد الفيديو غير متاح في التطبيق المجاني.'},
+    {n:'NotebookLM', c:'#0F7C90', st:'lim', stl:'مجاني بحدود', cats:['video','sheet'], d:'يحوّل مصادرك إلى ملخصات صوتية ومرئية وإنفوجرافيك وأسئلة.', lim:'في نسخة Google التعليمية حتى ٣ يومياً لكل نوع. الفيديو السينمائي مدفوع.'},
+    {n:'Arena', c:'#5B3DF5', st:'free', stl:'مجاني', cats:['games','code'], d:'موقع arena.ai يقارن بين نموذجين. في WebDev Arena تكتب طلباً فيبني كل نموذج تطبيق ويب، فتختار الأفضل.', lim:'النماذج مجهولة حتى تصوّت. لا ترفع بيانات طلاب.'},
+    {n:'Grok', c:'#111536', st:'txt', stl:'نصوص فقط', cats:['code','sheet'], d:'مجاني للنصوص والأفكار والكود.', lim:'توليد الصور والفيديو صار بالاشتراك منذ مارس ٢٠٢٦.'},
+    {n:'Gemini Spark', c:'#8A5300', st:'paid', stl:'غير مجاني', cats:[], d:'وكيل يعمل في الخلفية عبر تطبيقات Google. تجريبي لمشتركي خطة Google AI Ultra في أمريكا.', lim:'لا يصلح للتدريب. البديل المجاني: Gemini العادي.'},
+    {n:'Google Flow', c:'#D9467A', st:'lim', stl:'٥٠ رصيداً يومياً', cats:['video','image'], d:'صنع مقاطع فيديو قصيرة من وصف نصي أو من صور.', lim:'الرصيد لا يُرحَّل، وقد يتوقف التوليد المجاني وقت الذروة.'},
+    {n:'Google Vids', c:'#2F6F52', st:'lim', stl:'مجاني بحدود', cats:['video'], d:'يبني مخطط مشاهد مع تعليق صوتي من نص.', lim:'الحسابات الشخصية لها عدد محدود من التوليدات شهرياً.'}
+  ];
+  var TCATS = [['all','الكل'],['games','ألعاب'],['sheet','أوراق عمل'],['image','صور'],['video','فيديو'],['code','كود']];
+
+  var SITES = [
+    {n:'Canva Code', c:'#3A3FCB', d:'يصنع ألعاباً مصغرة وحاسبات دون برمجة. حساب Canva للتعليم مجاني للمعلمين بعد التحقق.', tags:['بلا برمجة','تحقق المعلم'], note:'تحقق من توفره في بلدك.'},
+    {n:'Educaplay', c:'#1B8F6B', d:'ألعاب تعليمية بمولّد ذكاء اصطناعي. الخطة الأساسية تتيح لعبة واحدة كل ساعة.', tags:['بلا برمجة','خطة مجانية']},
+    {n:'Eduaide', c:'#B0482E', d:'صيغ ألعاب جاهزة: جيوباردي وبنغو وغرفة هروب، وأوراق عمل ومنظمات بيانية.', tags:['صيغ جاهزة','خطة مجانية']},
+    {n:'StudyQuest', c:'#5B3DF5', d:'يحوّل ملاحظاتك إلى ألعاب بأكثر من ٤٠ نمطاً.', tags:['من ملاحظاتك']},
+    {n:'TriviaMaker', c:'#0F7C90', d:'يحوّل موضوعاً أو ملفاً إلى أسئلة جاهزة في أقل من دقيقة.', tags:['مسابقات','خطة مجانية محدودة']},
+    {n:'Conker · Gibbly', c:'#D9467A', d:'Conker لتوليد الاختبارات، وGibbly لأنشطة مُلعَّبة مرتبطة بالمنهج.', tags:['اختبارات','خطة مجانية']},
+    {n:'Google AI Studio', c:'#8A5300', d:'يبني تطبيقات ويب من وصف نصي مجاناً حسب معرفتي، ولم أتحقق من حدوده الحالية.', tags:['وصف نصي'], note:'جرّبه قبل الاعتماد عليه.'}
+  ];
+
+  var VIDEO_ALT = [
+    {t:'Google Vids', s:'الحسابات الشخصية تحصل على ١٠ توليدات فيديو شهرياً، وكل مقطع بعلامة SynthID مدمجة.'},
+    {t:'NotebookLM', s:'ملخص مرئي من مصادرك بحد يومي. الفيديو السينمائي غير متاح مجاناً.'},
+    {t:'Canva', s:'مقاطع قصيرة ومونتاج بخطة مجانية محدودة، وغالباً بعلامة مائية.'},
+    {t:'Kling · InVideo AI · Kapwing', s:'لها خطط مجانية بحدود أسبوعية وعلامة مائية في الغالب.'},
+    {t:'Grok Imagine', s:'لم يعد مجانياً: توليد الفيديو والصور بالاشتراك منذ مارس ٢٠٢٦.'}
+  ];
+
+  var STEPS = [
+    {t:'هيّئ الأداة', d:'أعطها الدور والسياق (المرحلة، المادة، مستوى الطلاب) قبل أن تطلب المهمة. هذا هو Prompt Priming.', ex:'أنت مصمم ألعاب تعليمية لمعلمي الصف الخامس الابتدائي. طلابي يحبون التحديات القصيرة ومستواهم متوسط في الكسور. سأطلب منك ألعاباً تناسب هذا السياق، هل فهمت؟'},
+    {t:'اطلب المنتج', d:'صف ما تريد بدقة: نوعه، عدد الأسئلة، اللغة، الاتجاه، وما لا تريده.', ex:'أنشئ لعبة تفاعلية بملف HTML واحد، عربية من اليمين لليسار، فيها ١٠ أسئلة متدرجة عن جمع الكسور، مع نقاط وتغذية راجعة فورية ومؤقت ٣٠ ثانية لكل سؤال.'},
+    {t:'شغّله', d:'من المعاينة داخل المحادثة إن وُجدت. وإلا انسخ الكود إلى ملف بامتداد html وافتحه في المتصفح. لبرامج Python استخدم Google Colab، ولـJava استخدم OnlineGDB.', ex:'احفظ الملف باسم game.html ثم انقر عليه نقراً مزدوجاً.'},
+    {t:'عدّل', d:'حسّن النتيجة بطلبات قصيرة متتابعة بدل البدء من جديد.', ex:'اجعل الأسئلة أسهل قليلاً، وأضف شارة عند ٥ إجابات صحيحة متتالية، وكبّر الأزرار للجوال.'},
+    {t:'راجع', d:'تأكد من صحة المعلومات والإجابات، ومن مناسبة المحتوى للعمر، ولا تُدخل أسماء طلاب أو بيانات شخصية.', ex:'جرّب اللعبة بنفسك أولاً، وقارن الإجابات بالكتاب المدرسي.'}
+  ];
+
+  var NOTES = [
+    ['الخطط المجانية تتغير','الحدود اليومية والأسعار والدول المتاحة تتبدل بسرعة. راجع صفحة الخطط في كل أداة قبل المحاضرة، ولا تعتمد على أداة واحدة.'],
+    ['جودة العربية تتفاوت','اختبر كل أداة بنص عربي قصير أولاً، وانتبه للتشكيل والاتجاه من اليمين لليسار. وإن ضعفت أداة في العربية فاكتب المحتوى بأداة نصية ثم انقله.'],
+    ['راجع كل مخرَج','قد يخطئ الذكاء الاصطناعي أو يختلق معلومة بثقة. جرّب اللعبة وحلّ الورقة بنفسك وقارنها بالكتاب قبل العرض.'],
+    ['خصوصية الطلاب','لا تُدخل أسماء الطلاب أو صورهم أو بياناتهم في أي أداة، واستخدم أسماء فرق وأمثلة عامة.'],
+    ['التربية الإسلامية','لا تطلب من الذكاء الاصطناعي كتابة آيات أو أحاديث أو أحكام. ضع أنت النصوص الموثقة، وراجعها مع مختص.'],
+    ['الصور والفيديو وحقوقها','لا تولّد صوراً لأشخاص حقيقيين، وراجع شروط الاستخدام: بعض الخطط المجانية لها علامة مائية أو تقتصر على الاستخدام الشخصي.']
+  ];
+
+  /* ---------- stats ---------- */
+  var totalTasks = SUBJECTS.reduce(function(a, s){ return a + s.tasks.length; }, 0);
+  var statVals = {sTasks:totalTasks, sSubs:SUBJECTS.length, sTools:TOOLS.length, sSites:SITES.length};
+
+  /* ---------- plan (saved in the browser when allowed) ---------- */
+  var plan = [];
+  try{ var saved = JSON.parse(localStorage.getItem('guide-plan') || '[]'); if(Array.isArray(saved)) plan = saved; }catch(e){}
+  function savePlan(){ try{ localStorage.setItem('guide-plan', JSON.stringify(plan)); }catch(e){} }
+  function findTask(id){
+    for(var i = 0; i < SUBJECTS.length; i++){ for(var j = 0; j < SUBJECTS[i].tasks.length; j++){ if(SUBJECTS[i].tasks[j].id === id) return {s:SUBJECTS[i], t:SUBJECTS[i].tasks[j]}; } }
+    return null;
+  }
+  function renderPlan(){
+    plan = plan.filter(function(id){ return !!findTask(id); });
+    $('#planCount').textContent = ar(plan.length);
+    var body = $('#planBody');
+    if(!plan.length){ body.innerHTML = '<p class="empty">لم تضف مهمات بعد. اختر مادتك من قسم «المهمات» واضغط «أضف إلى خطتي».</p>'; }
+    else {
+      body.innerHTML = '<ul>' + plan.map(function(id, i){
+        var f = findTask(id);
+        return '<li><span class="n">' + ar(i + 1) + '</span><div><b>' + esc(f.t.title) + '</b><small>' + esc(f.s.name) + ' · ' + esc(f.t.type) + ' · ' + esc(f.t.tools.join('، ')) + '</small></div><button type="button" data-rm="' + id + '" aria-label="إزالة">إزالة</button></li>';
+      }).join('') + '</ul>';
+    }
+    document.querySelectorAll('[data-add]').forEach(function(b){
+      var on = plan.indexOf(b.getAttribute('data-add')) >= 0;
+      b.classList.toggle('on', on); b.textContent = on ? 'أُضيفت إلى خطتي' : 'أضف إلى خطتي';
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+  }
+  function planText(){
+    var lines = ['خطتي التطبيقية — مدارس أجيال المواهب — التطوير المهني', ''];
+    plan.forEach(function(id, i){ var f = findTask(id); lines.push(ar(i + 1) + '. ' + f.s.name + ' — ' + f.t.title + ' (' + f.t.type + ') — الأدوات: ' + f.t.tools.join('، ')); });
+    return lines.join('\n');
+  }
+
+  /* ---------- clipboard ---------- */
+  function copyText(text, btn, label){
+    function done(){ if(!btn) return; var old = btn.textContent; btn.textContent = 'تم النسخ'; setTimeout(function(){ btn.textContent = label || old; }, 1600); }
+    function fallback(){
+      var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(ta); done();
+    }
+    try{ if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(text).then(done, fallback); } else { fallback(); } }catch(e){ fallback(); }
+  }
+
+  /* ---------- 1. subject explorer ---------- */
+  var subsEl = $('#subs'), spEl = $('#sp'), curSub = SUBJECTS[0].id;
+  subsEl.innerHTML = SUBJECTS.map(function(s){
+    return '<button type="button" role="tab" data-sub="' + s.id + '" aria-selected="false" style="--c:' + s.c + '">' + ICON[s.id] + '<span>' + esc(s.name) + '</span></button>';
+  }).join('');
+  function showSubject(id){
+    var y0 = window.scrollY;
+    curSub = id;
+    var s = SUBJECTS.filter(function(x){ return x.id === id; })[0];
+    subsEl.querySelectorAll('button').forEach(function(b){ b.setAttribute('aria-selected', b.getAttribute('data-sub') === id ? 'true' : 'false'); });
+    var html = '<div class="sp-h" style="--c:' + s.c + '"><span class="bl">' + ICON[s.id] + '</span><div><h3>' + esc(s.name) + '</h3><p>' + esc(s.intro) + '</p></div></div><div class="tasks">';
+    html += s.tasks.map(function(t){
+      return '<article class="task"><div class="badges"><span class="b type">' + esc(t.type) + '</span>' + t.tools.map(function(x){ return '<span class="b tool">' + esc(x) + '</span>'; }).join('') + '</div>' +
+        '<h4>' + esc(t.title) + '</h4><p class="why">' + esc(t.why) + '</p>' +
+        (t.caution ? '<div class="caution">' + esc(t.caution) + '</div>' : '') +
+        '<details><summary>الخطوات</summary><ol>' + t.steps.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ol></details>' +
+        '<details><summary>الطلب الجاهز</summary><div class="pbox" id="p-' + t.id + '">' + esc(t.prompt) + '</div></details>' +
+        '<div class="acts"><button class="btn sm ghost" type="button" data-cp="' + t.id + '">انسخ الطلب</button><button class="btn sm" type="button" data-add="' + t.id + '" aria-pressed="false">أضف إلى خطتي</button></div></article>';
+    }).join('') + '</div>';
+    spEl.innerHTML = html; renderPlan();
+    var selBtn = subsEl.querySelector('[aria-selected="true"]'); if(selBtn) keepVisibleX(selBtn);
+    restoreY(y0);
+  }
+  subsEl.addEventListener('click', function(e){ var b = e.target.closest('[data-sub]'); if(b) showSubject(b.getAttribute('data-sub')); });
+  spEl.addEventListener('click', function(e){
+    var c = e.target.closest('[data-cp]'); if(c){ var f = findTask(c.getAttribute('data-cp')); copyText(f.t.prompt, c, 'انسخ الطلب'); return; }
+    var a = e.target.closest('[data-add]'); if(a){ var id = a.getAttribute('data-add'), i = plan.indexOf(id); if(i >= 0) plan.splice(i, 1); else plan.push(id); savePlan(); renderPlan(); }
+  });
+
+  /* ---------- 2. tools ---------- */
+  var tf = $('#tfilters'), tg = $('#tgrid');
+  tf.innerHTML = TCATS.map(function(c, i){ return '<button type="button" data-f="' + c[0] + '" aria-pressed="' + (i === 0) + '">' + c[1] + '</button>'; }).join('');
+  tg.innerHTML = TOOLS.map(function(t){
+    return '<article class="tool" data-cats="' + t.cats.join(' ') + '"><div class="hd"><span class="av" style="background:' + t.c + '">' + esc(t.n.charAt(0)) + '</span><h3>' + esc(t.n) + '</h3><span class="st ' + t.st + '">' + esc(t.stl) + '</span></div><p>' + esc(t.d) + '</p><div class="lm">' + esc(t.lim) + '</div></article>';
+  }).join('');
+  tf.addEventListener('click', function(e){
+    var b = e.target.closest('[data-f]'); if(!b) return; var f = b.getAttribute('data-f');
+    tf.querySelectorAll('button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+    tg.querySelectorAll('.tool').forEach(function(t){ var cats = (t.getAttribute('data-cats') || '').split(' '); t.hidden = !(f === 'all' || cats.indexOf(f) >= 0); });
+  });
+
+  /* ---------- 3. steps ---------- */
+  var sl = $('#stepList'), sb = $('#stepBody'), curStep = 0;
+  sl.innerHTML = STEPS.map(function(s, i){ return '<button type="button" role="tab" data-st="' + i + '" aria-selected="false"><i>' + ar(i + 1) + '</i><span>' + esc(s.t) + '</span></button>'; }).join('');
+  function showStep(i){
+    curStep = Math.max(0, Math.min(STEPS.length - 1, i));
+    sl.querySelectorAll('button').forEach(function(b, k){ b.setAttribute('aria-selected', k === curStep ? 'true' : 'false'); });
+    var s = STEPS[curStep];
+    sb.innerHTML = '<h3>الخطوة ' + ar(curStep + 1) + ': ' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p><div class="pbox" id="stEx">' + esc(s.ex) + '</div><div class="acts"><button class="btn sm ghost" type="button" data-cpst="1">انسخ المثال</button></div>' +
+      '<div class="nav2"><button class="btn ghost sm" type="button" data-sn="-1"' + (curStep === 0 ? ' style="visibility:hidden"' : '') + '>‹ السابقة</button><button class="btn sm" type="button" data-sn="1"' + (curStep === STEPS.length - 1 ? ' style="visibility:hidden"' : '') + '>التالية ›</button></div>';
+  }
+  sl.addEventListener('click', function(e){ var b = e.target.closest('[data-st]'); if(b) showStep(+b.getAttribute('data-st')); });
+  sb.addEventListener('click', function(e){
+    var n = e.target.closest('[data-sn]'); if(n){ showStep(curStep + (+n.getAttribute('data-sn'))); return; }
+    var c = e.target.closest('[data-cpst]'); if(c) copyText(STEPS[curStep].ex, c, 'انسخ المثال');
+  });
+
+  /* ---------- 4. prompt builder ---------- */
+  var bSub = $('#bSub');
+  bSub.innerHTML = SUBJECTS.filter(function(s){ return s.id !== 'all'; }).map(function(s){ return '<option>' + esc(s.name) + '</option>'; }).join('');
+  function buildPrompt(){
+    var sub = bSub.value, grade = $('#bGrade').value, level = $('#bLevel').value, topic = ($('#bTopic').value || '[الموضوع]').trim(), type = $('#bType').value;
+    var pts = $('#bPts').checked, rtl = $('#bRtl').checked;
+    var role = {game:'مصمم ألعاب تعليمية', sheet:'مصمم أوراق عمل تعليمية', video:'كاتب سيناريوهات فيديو تعليمية', image:'مصمم صور تعليمية', py:'مدرّس برمجة للمبتدئين', java:'مدرّس برمجة للمبتدئين'}[type];
+    var prime = 'أنت ' + role + ' لمعلمي مادة ' + sub + '. أعمل مع طلاب مرحلة «' + grade + '» ومستواهم ' + level + '. سأطلب منك مواد بالعربية الفصحى المبسطة، ولا تذكر معلومات غير مؤكدة، ولا تستخدم أسماء طلاب حقيقيين. سأرسل لك الطلب بعد هذه الرسالة، هل فهمت؟';
+    var req;
+    if(type === 'game'){
+      req = 'أنشئ لعبة تفاعلية بملف HTML واحد لطلاب ' + grade + ' في مادة ' + sub + '، موضوعها: ' + topic + '. فيها ١٠ أسئلة أو تحديات متدرجة الصعوبة وتغذية راجعة فورية بشرح قصير للخطأ.' + (pts ? ' أضف نقاطاً وشارات إنجاز ومؤقتاً لكل سؤال.' : '') + (rtl ? ' اجعل الواجهة عربية من اليمين لليسار' : ' اجعل الواجهة واضحة') + ' بألوان مبهجة وأزرار كبيرة تناسب الجوال، ولا تستخدم مكتبات خارجية.';
+    } else if(type === 'sheet'){
+      req = 'أنشئ ورقة عمل في ' + topic + ' لطلاب ' + grade + ' في مادة ' + sub + ' بثلاثة مستويات (أساسي، متوسط، تحدٍّ)، في كل مستوى ٥ أسئلة متدرجة، ثم صفحة منفصلة بنموذج الإجابة.' + (pts ? ' أضف في نهاية كل مستوى خانة نقاط وشارة تشجيع.' : '') + ' اكتبها بتنسيق جاهز للطباعة' + (rtl ? ' بالعربية من اليمين لليسار.' : '.');
+    } else if(type === 'video'){
+      req = 'اكتب سيناريو فيديو مدته ٣٠ ثانية عن ' + topic + ' لطلاب ' + grade + ' في مادة ' + sub + '، مقسماً إلى ٤ مشاهد، كل مشهد ٨ ثوانٍ. لكل مشهد: وصف بصري دقيقاً بالإنجليزية لأداة الفيديو، وجملة تعليق بالعربية.' + (pts ? ' اختم بسؤال تحدٍّ قصير يحفّز الطلاب.' : '') + ' بلا نصوص مكتوبة داخل الصورة.';
+    } else if(type === 'image'){
+      req = 'صف لي ٦ صور توضيحية ملوّنة عن ' + topic + ' لطلاب ' + grade + ' في مادة ' + sub + '، كل صورة بوصف دقيق لأولّدها بأداة صور، بأسلوب رسوم لطيفة وبلا نصوص داخل الصورة' + (pts ? '، وأضف لكل صورة سؤالاً قصيراً يحفّز الطلاب على الملاحظة.' : '.');
+    } else {
+      var lang = type === 'py' ? 'Python' : 'Java (في صف واحد باسم Main)';
+      req = 'اكتب برنامج ' + lang + ' بسيطاً يخدم موضوع ' + topic + ' لطلاب ' + grade + ' في مادة ' + sub + '. أضف تعليقات عربية على كل سطر، ثم اقترح ٣ تعديلات يجربها الطلاب.' + (pts ? ' اجعله لعبة فيها نقاط ومستويات.' : '');
+    }
+    $('#oPrime').textContent = prime; $('#oReq').textContent = req;
+  }
+  ['bSub','bGrade','bLevel','bTopic','bType','bPts','bRtl'].forEach(function(id){ var el = document.getElementById(id); el.addEventListener('input', buildPrompt); el.addEventListener('change', buildPrompt); });
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click', function(){ copyText(document.getElementById(b.getAttribute('data-copy')).textContent, b); }); });
+  buildPrompt();
+
+  /* ---------- 5. game sites ---------- */
+  $('#sites').innerHTML = SITES.map(function(s){
+    return '<article class="site"><span class="ic" style="background:' + s.c + '">' + esc(s.n.charAt(0)) + '</span><div><h4>' + esc(s.n) + '</h4><p>' + esc(s.d) + (s.note ? ' ' + esc(s.note) : '') + '</p><div class="tags">' + s.tags.map(function(t){ return '<span class="b type">' + esc(t) + '</span>'; }).join('') + '</div></div></article>';
+  }).join('');
+
+  /* ---------- 6. video credits calculator ---------- */
+  var DAILY = 50;
+  function calc(){
+    var cost = +document.querySelector('input[name=q]:checked').value, n = +$('#clips').value;
+    $('#clipsN').textContent = ar(n);
+    var total = cost * n, res = $('#calcRes'), note = $('#calcNote'), meter = $('#meter'), mi = $('#meterI');
+    if(cost > DAILY){
+      res.textContent = 'لا يمكن مجاناً';
+      note.textContent = 'المقطع بجودة عالية يكلّف ' + ar(cost) + ' رصيد، والرصيد المجاني اليومي ' + ar(DAILY) + ' فقط ولا يُرحَّل. اختر النمط الخفيف أو السريع.';
+      meter.classList.add('over'); mi.style.width = '100%'; return;
+    }
+    var days = Math.ceil(total / DAILY);
+    res.textContent = days === 1 ? 'يكفي يوماً واحداً' : 'تحتاج ' + ar(days) + ' أيام';
+    note.textContent = ar(n) + ' مقاطع × ' + ar(cost) + ' = ' + ar(total) + ' رصيداً. ' + (days === 1 ? 'المتبقي من رصيد اليوم: ' + ar(DAILY - total) + '.' : 'وزّعها على أيام لأن الرصيد يتجدد يومياً ولا يُرحَّل. وقد يتوقف التوليد المجاني وقت الذروة.');
+    meter.classList.toggle('over', total > DAILY); mi.style.width = Math.min(100, total / DAILY * 100) + '%';
+  }
+  document.querySelectorAll('input[name=q]').forEach(function(r){ r.addEventListener('change', calc); });
+  $('#clips').addEventListener('input', calc); calc();
+  $('#vopts').innerHTML = VIDEO_ALT.map(function(v){ return '<div class="vopt"><div><b>' + esc(v.t) + '</b><small>' + esc(v.s) + '</small></div></div>'; }).join('');
+
+  /* ---------- 7. plan actions ---------- */
+  $('#planBody').addEventListener('click', function(e){ var r = e.target.closest('[data-rm]'); if(r){ var i = plan.indexOf(r.getAttribute('data-rm')); if(i >= 0) plan.splice(i, 1); savePlan(); renderPlan(); } });
+  $('#planCopy').addEventListener('click', function(){ if(!plan.length) return; copyText(planText(), $('#planCopy'), 'انسخ الخطة'); });
+  $('#planPrintBtn').addEventListener('click', function(){ if(!plan.length) return; try{ window.print(); }catch(e){} });
+  $('#planClear').addEventListener('click', function(){ plan = []; savePlan(); renderPlan(); });
+
+  /* ---------- 8. notes ---------- */
+  $('#acc').innerHTML = NOTES.map(function(n, i){ return '<details' + (i === 0 ? ' open' : '') + '><summary>' + esc(n[0]) + '</summary><p>' + esc(n[1]) + '</p></details>'; }).join('');
+
+  /* ---------- scroll: progress bar, active section, reveal, count-up ---------- */
+  function keepVisibleX(el){
+    var box = el.parentElement; if(!box) return;
+    var a = el.getBoundingClientRect(), b = box.getBoundingClientRect();
+    if(a.left >= b.left + 8 && a.right <= b.right - 8) return;
+    var delta = (a.left + a.width / 2) - (b.left + b.width / 2);
+    try{ box.scrollBy({left: delta, top: 0, behavior: 'auto'}); }catch(e){ box.scrollLeft += delta; }
+  }
+  function restoreY(y){
+    if(Math.abs(window.scrollY - y) > 1){
+      var r = document.documentElement, old = r.style.scrollBehavior;
+      r.style.scrollBehavior = 'auto'; window.scrollTo(0, y); r.style.scrollBehavior = old;
+    }
+  }
+  var prog = $('#prog'), secLinks = document.querySelectorAll('#secnav a'), secs = [];
+  secLinks.forEach(function(a){ var s = document.querySelector(a.getAttribute('href')); if(s) secs.push([a, s]); });
+  function onScroll(){
+    var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+    prog.style.width = (max > 0 ? Math.min(100, (h.scrollTop || document.body.scrollTop) / max * 100) : 0) + '%';
+    var y = window.scrollY + 170, cur = null;
+    secs.forEach(function(p){ if(p[1].offsetTop <= y) cur = p[0]; });
+    secLinks.forEach(function(a){ a.classList.toggle('on', a === cur); });
+    if(cur) keepVisibleX(cur);
+  }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function countUp(el, to){
+    if(reduce){ el.textContent = ar(to); return; }
+    var t0 = null;
+    (function step(ts){ if(!t0) t0 = ts; var p = Math.min(1, (ts - t0) / 900); el.textContent = ar(Math.round(to * p)); if(p < 1) requestAnimationFrame(step); })(performance.now());
+  }
+  Object.keys(statVals).forEach(function(id){ var el = document.getElementById(id); el.textContent = ar(0); });
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); }, {threshold:.12});
+    document.querySelectorAll('.rv').forEach(function(el){ io.observe(el); });
+    var so = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ Object.keys(statVals).forEach(function(id){ countUp(document.getElementById(id), statVals[id]); }); so.disconnect(); } }); }, {threshold:.4});
+    so.observe($('#stats'));
+  } else {
+    document.querySelectorAll('.rv').forEach(function(el){ el.classList.add('in'); });
+    Object.keys(statVals).forEach(function(id){ document.getElementById(id).textContent = ar(statVals[id]); });
+  }
+
+
+  /* ---------- journey navigation: تنقّل بالضغط بين الأقسام ---------- */
+  var jnav = $('#jnav'), jPrev = $('#jPrev'), jNext = $('#jNext'), jCount = $('#jCount');
+  var order = secs.map(function(p){ return p[1]; });
+  function curIndex(){
+    var y = window.scrollY + 170, idx = -1;
+    order.forEach(function(s, i){ if(s.offsetTop <= y) idx = i; });
+    return idx;
+  }
+  function updJ(){
+    var i = curIndex();
+    jCount.textContent = i < 0 ? 'البداية' : ar(i + 1) + ' / ' + ar(order.length);
+    jPrev.style.visibility = i < 0 ? 'hidden' : 'visible';
+    jNext.textContent = i === order.length - 1 ? 'إلى الأعلى' : 'التالي ›';
+  }
+  function goSec(i){
+    if(i < 0 || i >= order.length){ window.scrollTo({top:0, behavior:'smooth'}); return; }
+    order[i].scrollIntoView({behavior:'smooth', block:'start'});
+  }
+  jNext.addEventListener('click', function(){ var i = curIndex(); goSec(i === order.length - 1 ? -1 : i + 1); });
+  jPrev.addEventListener('click', function(){ var i = curIndex(); goSec(i - 1); });
+  window.addEventListener('scroll', updJ, {passive:true});
+  document.addEventListener('keydown', function(e){
+    if(entered) {
+      if(/INPUT|TEXTAREA|SELECT/.test((e.target && e.target.tagName) || '')) return;
+      var i = curIndex();
+      if(e.key === 'ArrowLeft'){ goSec(i === order.length - 1 ? -1 : i + 1); }
+      if(e.key === 'ArrowRight'){ goSec(i - 1); }
+    }
+  });
+  updJ();
+
+  /* ---------- intro: شاشة انتظار صامتة ---------- */
+  var intro = $('#intro'), iBar = $('#ibar'), iBarWrap = $('#ibarWrap'), iStatus = $('#introStatus'), iSkip = $('#introSkip');
+  var entered = false, raf = 0, t0 = 0, userMoved = false, DUR = 3200;
+  ['wheel','touchstart','pointerdown','keydown'].forEach(function(ev){ window.addEventListener(ev, function(){ if(entered) userMoved = true; }, {passive:true}); });
+  document.documentElement.style.overflow = 'hidden';
+  function setBar(p){ p = Math.max(0, Math.min(100, p)); iBar.style.width = p + '%'; iBarWrap.setAttribute('aria-valuenow', String(Math.round(p))); }
+  function tickBar(){
+    if(entered) return;
+    var p = Math.min(1, (performance.now() - t0) / DUR);
+    setBar(p * 100);
+    if(p >= 1){ iStatus.textContent = 'والآن نبدأ رحلة التطبيق!'; setTimeout(enter, 400); return; }
+    raf = requestAnimationFrame(tickBar);
+  }
+  function enter(){
+    if(entered) return;
+    entered = true; cancelAnimationFrame(raf);
+    intro.classList.add('out');
+    document.documentElement.style.overflow = '';
+    setTimeout(function(){
+      intro.hidden = true; document.body.classList.remove('paused'); jnav.hidden = false; updJ();
+      setTimeout(function(){ if(!userMoved && window.scrollY < 60){ var tk = document.getElementById('tasks'); if(tk) tk.scrollIntoView({behavior:'smooth', block:'start'}); } }, 2800);
+    }, 660);
+  }
+  iSkip.addEventListener('click', function(e){ e.stopPropagation(); enter(); });
+  t0 = performance.now(); tickBar();
+
+  /* ---------- start ---------- */
+  showStep(0); showSubject(curSub); renderPlan();
+})();
+</script>
+</body>
+</html>
